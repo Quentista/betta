@@ -5,31 +5,31 @@
 
 Equation::Equation (QWidget *pwgt) : QWidget(pwgt)
 {
-    QLabel* A1 = new QLabel("X^2+");
-    QLabel* B1 = new QLabel("X+");
-    QLabel* C1 = new QLabel("=0");
-    QLabel* X1 = new QLabel("X1=");
-    QLabel* X2 = new QLabel("X2=");
+    m_a1 = new QLabel("X^2+");
+    m_b1 = new QLabel("X+");
+    m_c1 = new QLabel("=0");
+    m_x1 = new QLabel("X1=");
+    m_x2 = new QLabel("X2=");
 
-    QLCDNumber* Ans1 = new QLCDNumber(12);
-    Ans1 ->setSegmentStyle(QLCDNumber::Flat);
-    QLCDNumber* Ans2 = new QLCDNumber(12);
-    Ans2 ->setSegmentStyle(QLCDNumber::Flat);
-
-
-    QDoubleSpinBox* A = new QDoubleSpinBox;
-    A->setRange(-9999, 9999);
-
-    QDoubleSpinBox* B = new QDoubleSpinBox;
-    B->setRange(-9999, 9999);
-
-    QDoubleSpinBox* C = new QDoubleSpinBox;
-    C->setRange(-9999, 9999);
-
-    QPushButton* Run = new QPushButton ("Run");
+    m_ans1 = new QLCDNumber(12);
+    m_ans1 ->setSegmentStyle(QLCDNumber::Flat);
+    m_ans2 = new QLCDNumber(12);
+    m_ans2 ->setSegmentStyle(QLCDNumber::Flat);
 
 
-    QObject::connect(Run, SIGNAL(clicked()) ,
+    m_a = new QDoubleSpinBox;
+    m_a->setRange(-9999, 9999);
+
+    m_b = new QDoubleSpinBox;
+    m_b->setRange(-9999, 9999);
+
+    m_c = new QDoubleSpinBox;
+    m_c->setRange(-9999, 9999);
+
+    m_run = new QPushButton ("Run");
+
+
+    QObject::connect(m_run, SIGNAL(clicked()) ,
                      SLOT (slotButtonClicked()));
 
 
@@ -42,20 +42,20 @@ Equation::Equation (QWidget *pwgt) : QWidget(pwgt)
 
     QGridLayout* firstLay = new QGridLayout;
 
-    firstLay -> addWidget(A, 0,0);
-    firstLay -> addWidget(B, 0,2);
-    firstLay -> addWidget(C, 0,4);
+    firstLay -> addWidget(m_a, 0,0);
+    firstLay -> addWidget(m_b, 0,2);
+    firstLay -> addWidget(m_c, 0,4);
 
-    firstLay -> addWidget(A1, 0,1);
-    firstLay -> addWidget(B1, 0,3);
-    firstLay -> addWidget(C1, 0,5);
-    firstLay -> addWidget(X1, 1,0);
-    firstLay -> addWidget(X2,1,2);
+    firstLay -> addWidget(m_a1, 0,1);
+    firstLay -> addWidget(m_b1, 0,3);
+    firstLay -> addWidget(m_c1, 0,5);
+    firstLay -> addWidget(m_x1, 1,0);
+    firstLay -> addWidget(m_x2,1,2);
 
-    firstLay -> addWidget(Ans1, 1,1);
-    firstLay -> addWidget(Ans2, 1,3);
+    firstLay -> addWidget(m_ans1, 1,1);
+    firstLay -> addWidget(m_ans2, 1,3);
 
-    firstLay -> addWidget(Run, 1 , 4, 1, 3);
+    firstLay -> addWidget(m_run, 1 , 4, 1, 3);
 
     setLayout(firstLay);
 
@@ -65,16 +65,16 @@ Equation::Equation (QWidget *pwgt) : QWidget(pwgt)
 
 void Equation::slotButtonClicked()
 {
-    double fir = A -> value();
-    double sec = B ->value();
-    double thir = C ->value();
-    double Xp =0;
-    double Xm =0;
+    double n_fir = m_a -> value();
+    double n_sec = m_b ->value();
+    double n_thir = m_c ->value();
+    double n_xp =0;
+    double n_xm =0;
 
-    Xp = ((-1*sec)- sqrt(sec*sec - 4*fir*thir))/(2*fir);
-    Xm = ((-1*sec)+ sqrt(sec*sec - 4*fir*thir))/(2*fir);
-    Ans1 -> display (Xp);
-    Ans2 -> display (Xm);
+    n_xp = ((-1*n_sec)- sqrt(n_sec*n_sec - 4*n_fir*n_thir))/(2*n_fir);
+    n_xm = ((-1*n_sec)+ sqrt(n_sec*n_sec - 4*n_fir*n_thir))/(2*n_fir);
+    m_ans1 -> display (n_xp);
+    m_ans2 -> display (n_xm);
 
 
 }

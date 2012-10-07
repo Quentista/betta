@@ -4,3 +4,7 @@ SOURCES += \
 
 HEADERS += \
     equat.h
+
+TARGET = Equation
+
+TEMPLATE = app
