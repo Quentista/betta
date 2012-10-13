@@ -1,10 +1,14 @@
-SOURCES += \
-    main.cpp \
-    equat.cpp
-
-HEADERS += \
-    equat.h
-
+TEMPLATE = app
 TARGET = Equation
 
-TEMPLATE = app
+SOURCES += \
+    main.cpp \
+    Equat.cpp
+
+HEADERS += \
+    Equat.h
+
+QT += core gui
+
+OBJECTS_DIR = .obj
+MOC_DIR = .moc

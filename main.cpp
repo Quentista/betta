@@ -1,16 +1,15 @@
 #include <QApplication>
-#include <equat.h>
+#include <Equat.h>
 
 int main(int argc, char** argv)
 {
     QApplication app (argc, argv);
 
 
-    Equation Equat1;
+    Equation equat;
 
-    Equat1.resize(400,200);
-
-    Equat1.show();
+    equat.resize(400,200);
+    equat.show();
 
     return app.exec();
 }
