@@ -2,12 +2,10 @@
 #define EQUAT_H
 
 #include <QWidget>
-#include <QString>
 
 class QPushButton;
 class QLabel;
 class QLineEdit;
-class QString;
 
 class Equation : public QWidget
 {
@@ -37,10 +35,6 @@ private:
     QLineEdit* m_gamma;
 
     QPushButton* m_butRun;
-
-    QString m_first;
-    QString m_second;
-    QString m_third;
 };
 
 

@@ -68,33 +68,30 @@ Equation::Equation (QWidget *pwgt) : QWidget(pwgt)
 
 void Equation::slotButtonClicked()
 {
-    m_first = m_alfa->text();
-    double m_fir = m_first.toDouble();
-    m_second = m_betta->text();
-    double m_sec = m_second.toDouble();
-    m_third = m_gamma->text();
-    double m_th = m_third.toDouble();
+    double m_fir = m_alfa->text().toDouble();
+    double m_sec = m_betta->text().toDouble();
+    double m_th = m_gamma->text().toDouble();
     double m_xp =0;
     double m_xm =0;
 
-    if ((m_sec ==0)&&(m_th !=0))
-    {
-        m_answer1->setText("no roots");
-        m_answer2->setText("no roots");
-    }
-    else if (m_fir !=0)
+    if (m_fir !=0)
     {
         m_xp = ((-1*m_sec)- sqrt(m_sec*m_sec - 4*m_fir*m_th))/(2*m_fir);
         m_xm = ((-1*m_sec)+ sqrt(m_sec*m_sec - 4*m_fir*m_th))/(2*m_fir);
         m_answer1 -> setNum(m_xp);
         m_answer2 -> setNum(m_xm);
     }
-    else
-    {
-        m_xp = ((-1*m_th) / m_sec);
-        m_answer1 -> setNum(m_xp);
-        m_answer2->setText("one root only");
-    }
+        else if ((m_fir ==0)&&(m_sec !=0))
+         {
+          m_xp = ((-1*m_th) / m_sec);
+          m_answer1 -> setNum(m_xp);
+          m_answer2->setText("one root only");
+         }
+        else
+        {
+         m_answer1->setText("no roots");
+         m_answer2->setText("no roots");
+        }
 }
 
 
